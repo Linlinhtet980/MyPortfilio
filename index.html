@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lin Thu Rein Htet - Aspiring Fullstack Developer | Portfolio Website">
+    <title>Lin Thu Rein Htet | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ====== NAVBAR ====== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>LTRH<span class="logo-bracket"> /&gt;</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ====== HERO SECTION ====== -->
+    <section class="hero" id="hero">
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-greeting animate-on-scroll">မင်္ဂလာပါ၊ ကျွန်တော်က</p>
+                <h1 class="hero-name animate-on-scroll">
+                    Lin Thu Rein
+                    <span class="hero-name-accent">Htet</span>
+                </h1>
+                <div class="hero-title-wrapper animate-on-scroll">
+                    <span class="hero-title-label">I am a</span>
+                    <span class="hero-title" id="typed-text"></span>
+                    <span class="typed-cursor">|</span>
+                </div>
+                <p class="hero-description animate-on-scroll">
+                    Fullstack Developer ဖြစ်ဖို့ သင်တန်းတက်နေတဲ့ လူငယ် Developer တစ်ယောက်ပါ။
+                    Mathematics နဲ့ BBA ဘွဲ့ရရှိထားပြီး Technology ကို ဝါသနာပါပါတယ်။
+                </p>
+                <div class="hero-buttons animate-on-scroll">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> ဆက်သွယ်ရန်
+                    </a>
+                    <a href="CV file/Lin Thuren Htet CV .pdf" download class="btn btn-outline btn-cv">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+                <div class="hero-socials animate-on-scroll">
+                    <a href="https://github.com/Linlinhtet980" target="_blank" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:linpop890@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:09890648598" class="social-link" aria-label="Phone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual animate-on-scroll">
+                <div class="hero-avatar-ring">
+                    <div class="hero-avatar">
+                        <img src="images/hero-photo.png" alt="Lin Thu Rein Htet" class="avatar-img">
+                    </div>
+                </div>
+                <div class="floating-badge badge-1"><i class="fab fa-html5"></i></div>
+                <div class="floating-badge badge-2"><i class="fab fa-css3-alt"></i></div>
+                <div class="floating-badge badge-3"><i class="fab fa-js-square"></i></div>
+                <div class="floating-badge badge-4"><i class="fab fa-php"></i></div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <a href="#about">
+                <div class="mouse">
+                    <div class="mouse-wheel"></div>
+                </div>
+                <span>Scroll Down</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ====== ABOUT SECTION ====== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">01.</span> About Me
+            </h2>
+            <div class="about-grid">
+                <div class="about-text animate-on-scroll">
+                    <p>
+                        မင်္ဂလာပါ! ကျွန်တော့်နာမည်က <strong>Lin Thu Rein Htet</strong> ပါ။
+                        လက်ရှိမှာ <strong>Fullstack Web Developer</strong> ဖြစ်ဖို့ သင်တန်းတက်ရောက်နေပါတယ်။
+                    </p>
+                    <p>
+                        <strong>Mathematics</strong> ဘာသာရပ်နဲ့ ဘွဲ့ရရှိထားပြီး <strong>BBA (Bachelor of Business Administration)</strong>
+                        ဘွဲ့လည်း ရရှိထားပါတယ်။ Business နဲ့ Technology ကို ပေါင်းစပ်ပြီး
+                        ခေတ်မီတဲ့ Web Application တွေ ဖန်တီးနိုင်ဖို့ ကြိုးစားနေပါတယ်။
+                    </p>
+                    <p>
+                        Coding ကို ဝါသနာပါပြီး အသစ်အသစ်တွေ သင်ယူဖို့ အမြဲ စိတ်အားထက်သန်ပါတယ်။
+                        Team work နဲ့ Problem solving ကို နှစ်သက်ပါတယ်။
+                    </p>
+                </div>
+                <div class="about-info animate-on-scroll">
+                    <div class="info-card">
+                        <div class="info-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="info-card-content">
+                            <h4>Education</h4>
+                            <p>B.Sc (Mathematics)</p>
+                            <p>BBA</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="info-card-content">
+                            <h4>Focus</h4>
+                            <p>Fullstack Web Development</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-card-content">
+                            <h4>Location</h4>
+                            <p>Myanmar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EDUCATION SECTION ====== -->
+    <section class="section education" id="education">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">02.</span> Education
+            </h2>
+            <p class="section-subtitle animate-on-scroll">ကျွန်တော့်ရဲ့ ပညာရေး အကြောင်း</p>
+            <div class="education-timeline">
+                <!-- Education Item 1 -->
+                <div class="edu-card animate-on-scroll">
+                    <div class="edu-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="edu-content">
+                        <div class="edu-date">2024 အောက်တိုဘာ</div>
+                        <h3>B.Sc (Mathematics)</h3>
+                        <p class="edu-university">Hakha University</p>
+                        <p class="edu-school">သင်္ချာ ဘာသာရပ်ဖြင့် ဘွဲ့ရရှိခဲ့ပါတယ်။ Logic နှင့် Problem Solving skills ကို အခြေခံကျကျ လေ့လာခဲ့ပါတယ်။</p>
+                    </div>
+                </div>
+                <!-- Education Item 2 -->
+                <div class="edu-card animate-on-scroll">
+                    <div class="edu-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="edu-content">
+                        <div class="edu-date">2025</div>
+                        <h3>BBA (Bachelor of Business Administration)</h3>
+                        <p class="edu-university">Chin Christian University</p>
+                        <p class="edu-school">Business Administration ဘာသာရပ်ဖြင့် ဘွဲ့ရရှိခဲ့ပါတယ်။ Business နဲ့ Technology ကို ပေါင်းစပ်တတ်ဖို့ လေ့လာခဲ့ပါတယ်။</p>
+                    </div>
+                </div>
+                <!-- Education Item 3 -->
+                <div class="edu-card animate-on-scroll">
+                    <div class="edu-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="edu-content">
+                        <div class="edu-date">2025 ဇွန်လ ~ လက်ရှိ</div>
+                        <h3>Fullstack Web Development Training</h3>
+                        <p class="edu-university">Batch-3 BootCamp (Fullstack Developer)</p>
+                        <p class="edu-school">HTML, CSS, JavaScript, PHP, MySQL စသည့် Web Development technologies များကို လက်တွေ့ကျကျ သင်ကြားလေ့လာနေပါတယ်။</p>
+                        <div class="edu-tags">
+                            <span class="edu-tag">HTML5</span>
+                            <span class="edu-tag">CSS3</span>
+                            <span class="edu-tag">JavaScript</span>
+                            <span class="edu-tag">PHP</span>
+                            <span class="edu-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SKILLS SECTION ====== -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">03.</span> Skills
+            </h2>
+            <p class="section-subtitle animate-on-scroll">ကျွန်တော် သင်ကြားပြီးသွားတဲ့ Technology တွေပါ</p>
+            <div class="skills-grid">
+                <!-- HTML -->
+                <div class="skill-card animate-on-scroll" data-skill="HTML">
+                    <div class="skill-icon" style="--skill-color: #E44D26;">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML5</h3>
+                    <p>Semantic markup & Structure</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 85%; --skill-color: #E44D26;"></div>
+                    </div>
+                </div>
+                <!-- CSS -->
+                <div class="skill-card animate-on-scroll" data-skill="CSS">
+                    <div class="skill-icon" style="--skill-color: #1572B6;">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>CSS3</h3>
+                    <p>Styling & Responsive Design</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 80%; --skill-color: #1572B6;"></div>
+                    </div>
+                </div>
+                <!-- JavaScript -->
+                <div class="skill-card animate-on-scroll" data-skill="JavaScript">
+                    <div class="skill-icon" style="--skill-color: #F7DF1E;">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Interactivity & Logic</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 70%; --skill-color: #F7DF1E;"></div>
+                    </div>
+                </div>
+                <!-- PHP -->
+                <div class="skill-card animate-on-scroll" data-skill="PHP">
+                    <div class="skill-icon" style="--skill-color: #777BB4;">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h3>PHP</h3>
+                    <p>Server-side Development</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 70%; --skill-color: #777BB4;"></div>
+                    </div>
+                </div>
+                <!-- MySQL -->
+                <div class="skill-card animate-on-scroll" data-skill="MySQL">
+                    <div class="skill-icon" style="--skill-color: #4479A1;">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>MySQL</h3>
+                    <p>Database Management</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 65%; --skill-color: #4479A1;"></div>
+                    </div>
+                </div>
+                <!-- Git & GitHub -->
+                <div class="skill-card animate-on-scroll" data-skill="Git">
+                    <div class="skill-icon" style="--skill-color: #F1502F;">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3>Git & GitHub</h3>
+                    <p>Version Control & Collaboration</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 75%; --skill-color: #F1502F;"></div>
+                    </div>
+                </div>
+                <!-- VS Code -->
+                <div class="skill-card animate-on-scroll" data-skill="VSCode">
+                    <div class="skill-icon" style="--skill-color: #007ACC;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>VS Code</h3>
+                    <p>Code Editor & Tools</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 85%; --skill-color: #007ACC;"></div>
+                    </div>
+                </div>
+                <!-- Figma -->
+                <div class="skill-card animate-on-scroll" data-skill="Figma">
+                    <div class="skill-icon" style="--skill-color: #F24E1E;">
+                        <i class="fab fa-figma"></i>
+                    </div>
+                    <h3>Figma</h3>
+                    <p>UI/UX Design & Prototyping</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 75%; --skill-color: #F24E1E;"></div>
+                    </div>
+                </div>
+                <!-- Problem Solving -->
+                <div class="skill-card animate-on-scroll" data-skill="ProblemSolving">
+                    <div class="skill-icon" style="--skill-color: #FF9800;">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Problem Solving</h3>
+                    <p>Logical & Critical Thinking</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 80%; --skill-color: #FF9800;"></div>
+                    </div>
+                </div>
+                <!-- Teamwork -->
+                <div class="skill-card animate-on-scroll" data-skill="Teamwork">
+                    <div class="skill-icon" style="--skill-color: #4CAF50;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Teamwork</h3>
+                    <p>Collaboration & Communication</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 85%; --skill-color: #4CAF50;"></div>
+                    </div>
+                </div>
+                <!-- Time Management -->
+                <div class="skill-card animate-on-scroll" data-skill="TimeManagement">
+                    <div class="skill-icon" style="--skill-color: #9C27B0;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Management</h3>
+                    <p>Effective Task Prioritization</p>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--bar-width: 80%; --skill-color: #9C27B0;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PROJECTS SECTION ====== -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">04.</span> Projects
+            </h2>
+            <p class="section-subtitle animate-on-scroll">ကျွန်တော် လုပ်ခဲ့တဲ့ Project တွေပါ</p>
+            <div class="projects-grid">
+                <!-- Project 1: School Management System -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-school"></i>
+                            <span>School Management System</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Linlinhtet980/SchoolManagementSystem" target="_blank" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>School Management System</h3>
+                        <p>ကျောင်းသား၊ ဆရာ၊ အတန်း စီမံခန့်ခွဲရေး CRUD System တစ်ခုဖြစ်ပါတယ်။</p>
+                        <div class="project-tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Movie App -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-film"></i>
+                            <span>Movie Project</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Linlinhtet980/Movie" target="_blank" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Movie App</h3>
+                        <p>ရုပ်ရှင် ဇာတ်ကားများအကြောင်း ပြသပေးသော Web Application ပါ။</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Personal Portfolio (Module 1) -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Personal Portfolio</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Linlinhtet980/module1" target="_blank" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Portfolio</h3>
+                        <p>လက်ရှိ သင်ကြည့်နေသော Responsive Design ဖြင့် ရေးသားထားသည့် Portfolio Website ဖြစ်ပါတယ်။</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Module 2 -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-code"></i>
+                            <span>Module 2 Project</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Linlinhtet980/module2" target="_blank" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Module 2 Project</h3>
+                        <p>Fullstack Developer သင်တန်း Module 2 အတွက် ရေးသားထားသော Project ဖြစ်ပါတယ်။</p>
+                        <div class="project-tags">
+                            <span class="tag">Web Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Testing -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-vial"></i>
+                            <span>Testing Project</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/Linlinhtet980/testing" target="_blank" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Testing Repository</h3>
+                        <p>Code စမ်းသပ်ခြင်းနှင့် practice လုပ်ထားသော repository ဖြစ်ပါတယ်။</p>
+                        <div class="project-tags">
+                            <span class="tag">Git</span>
+                            <span class="tag">Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT SECTION ====== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">05.</span> Contact
+            </h2>
+            <p class="section-subtitle animate-on-scroll">ကျွန်တော့်ဆီ ဆက်သွယ်လိုပါက</p>
+            <div class="contact-grid">
+                <div class="contact-info animate-on-scroll">
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:09890648598">09 890 648 598</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:linpop890@gmail.com">linpop890@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon"><i class="fab fa-github"></i></div>
+                        <div>
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/Linlinhtet980" target="_blank">Linlinhtet980</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form animate-on-scroll" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="form-name" placeholder=" " required>
+                        <label for="form-name">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="form-email" placeholder=" " required>
+                        <label for="form-email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="form-message" rows="5" placeholder=" " required></textarea>
+                        <label for="form-message">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#hero" class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>LTRH<span class="logo-bracket"> /&gt;</span>
+                </a>
+                <div class="footer-socials">
+                    <a href="https://github.com/Linlinhtet980" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:linpop890@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:09890648598" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+                <p class="footer-copy">&copy; 2026 Lin Thu Rein Htet. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
