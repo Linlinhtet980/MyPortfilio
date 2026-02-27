@@ -481,17 +481,17 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form animate-on-scroll" id="contact-form">
+                <form class="contact-form animate-on-scroll" id="contact-form" action="https://formspree.io/f/mojnbjrv" method="POST">
                     <div class="form-group">
-                        <input type="text" id="form-name" placeholder=" " required>
+                        <input type="text" id="form-name" name="name" placeholder=" " required>
                         <label for="form-name">Name</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="form-email" placeholder=" " required>
+                        <input type="email" id="form-email" name="email" placeholder=" " required>
                         <label for="form-email">Email</label>
                     </div>
                     <div class="form-group">
-                        <textarea id="form-message" rows="5" placeholder=" " required></textarea>
+                        <textarea id="form-message" name="message" rows="5" placeholder=" " required></textarea>
                         <label for="form-message">Message</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
