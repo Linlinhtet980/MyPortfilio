@@ -4,6 +4,34 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ====== THEME TOGGLE (DARK/LIGHT MODE) ======
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const body = document.body;
+    
+    // Load saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    // Theme toggle click handler
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+    
+    function updateThemeIcon(theme) {
+        if (theme === 'light') {
+            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    }
+
     // ====== TYPING EFFECT ======
     const typedTextEl = document.getElementById('typed-text');
     const words = ['Fullstack Developer', 'Web Developer', 'Problem Solver', 'Tech Enthusiast'];
