@@ -4,26 +4,48 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ====== THEME TOGGLE (DARK/LIGHT MODE) ======
+    // ====== THEME TOGGLE (DARK/LIGHT MODE) + RIPPLE EFFECT ======
     const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     const body = document.body;
-    
+
     // Load saved theme from localStorage
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
-    
+
     // Theme toggle click handler
-    themeToggleBtn.addEventListener('click', () => {
+    themeToggleBtn.addEventListener('click', (e) => {
+        // Create Ripple Effect
+        const ripple = document.createElement('div');
+        ripple.classList.add('theme-ripple');
+        document.body.appendChild(ripple);
+
+        // Position ripple at click
+        ripple.style.left = `${e.clientX}px`;
+        ripple.style.top = `${e.clientY}px`;
+
+        // Use opposite theme color for ripple background
         const currentTheme = body.getAttribute('data-theme');
+        ripple.style.backgroundColor = currentTheme === 'dark' ? '#ffffff' : '#0a0a0f';
+
+        ripple.classList.add('animate');
+
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+
+        // Wait for ripple to cover screen before changing theme
+        setTimeout(() => {
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }, 400);
+
+        // Remove Ripple
+        setTimeout(() => {
+            ripple.remove();
+        }, 800);
     });
-    
+
     function updateThemeIcon(theme) {
         if (theme === 'light') {
             themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
@@ -95,12 +117,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ====== ACTIVE NAV LINK ON SCROLL ======
+    // ====== ACTIVE NAV LINK ON SCROLL & SLIDING INDICATOR ======
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    // Create sliding indicator
+    const navIndicator = document.createElement('div');
+    navIndicator.classList.add('nav-indicator');
+    navMenu.appendChild(navIndicator);
+
+    function updateNavIndicator(activeLink) {
+        if (activeLink) {
+            navIndicator.style.width = `${activeLink.offsetWidth}px`;
+            navIndicator.style.transform = `translateX(${activeLink.offsetLeft}px)`;
+            navIndicator.style.opacity = '1';
+        } else {
+            navIndicator.style.opacity = '0';
+        }
+    }
+
+    // Set initial indicator
+    setTimeout(() => {
+        const initialActive = document.querySelector('.nav-link.active');
+        updateNavIndicator(initialActive);
+    }, 100);
+
     function highlightNav() {
         const scrollY = window.scrollY + 100;
+        let foundActive = false;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -112,13 +156,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === '#' + sectionId) {
                         link.classList.add('active');
+                        updateNavIndicator(link);
+                        foundActive = true;
                     }
                 });
             }
         });
+
+        if (!foundActive && window.scrollY < 100) {
+            updateNavIndicator(navLinks[0]);
+        }
     }
 
     window.addEventListener('scroll', highlightNav);
+
+    // Update indicator on window resize
+    window.addEventListener('resize', () => {
+        const activeItem = document.querySelector('.nav-link.active');
+        if (activeItem) updateNavIndicator(activeItem);
+    });
 
     // ====== SCROLL ANIMATIONS (Intersection Observer) ======
     const animateElements = document.querySelectorAll('.animate-on-scroll');
@@ -154,8 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skillBars.forEach(bar => skillObserver.observe(bar));
 
-    // ====== PARTICLE BACKGROUND ======
+    // ====== PARTICLE BACKGROUND & INTERACTION ======
     const particlesContainer = document.getElementById('particles');
+    const particlesArray = [];
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
 
     function createParticles() {
         const particleCount = 30;
@@ -164,19 +223,69 @@ document.addEventListener('DOMContentLoaded', () => {
             const particle = document.createElement('div');
             particle.classList.add('particle');
 
-            // Random position and animation
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
+            // Initial positioning properties
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
             particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
             particle.style.animationDelay = (Math.random() * 5) + 's';
             particle.style.width = (Math.random() * 3 + 1) + 'px';
             particle.style.height = particle.style.width;
 
             particlesContainer.appendChild(particle);
+
+            particlesArray.push({
+                el: particle,
+                x: x,
+                y: y,
+                baseX: x,
+                baseY: y,
+                density: (Math.random() * 5) + 1
+            });
         }
     }
 
     createParticles();
+
+    // Animate particles based on mouse position
+    function animateParticles() {
+        particlesArray.forEach(p => {
+            // Calculate distance between mouse and particle
+            let dx = mouseX - p.x;
+            let dy = mouseY - p.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Interaction radius: 150px
+            if (distance < 150) {
+                // Push particles away
+                const forceDirectionX = dx / distance;
+                const forceDirectionY = dy / distance;
+                const force = (150 - distance) / 150;
+
+                const pushX = forceDirectionX * force * p.density * 5;
+                const pushY = forceDirectionY * force * p.density * 5;
+
+                p.x -= pushX;
+                p.y -= pushY;
+            } else {
+                // Return to base position slowly
+                if (p.x !== p.baseX) {
+                    p.x -= (p.x - p.baseX) / 10;
+                }
+                if (p.y !== p.baseY) {
+                    p.y -= (p.y - p.baseY) / 10;
+                }
+            }
+
+            p.el.style.transform = `translate(${p.x - p.baseX}px, ${p.y - p.baseY}px)`;
+        });
+
+        requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
 
     // ====== CONTACT FORM ======
     const contactForm = document.getElementById('contact-form');
@@ -208,6 +317,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('load', () => {
         document.body.style.opacity = '1';
+    });
+
+    // ====== CUSTOM CURSOR IMPLEMENTATION ======
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+
+    const cursorFollower = document.createElement('div');
+    cursorFollower.classList.add('custom-cursor-follower');
+
+    document.body.appendChild(cursor);
+    document.body.appendChild(cursorFollower);
+
+    let cursorX = window.innerWidth / 2;
+    let cursorY = window.innerHeight / 2;
+    let followerX = window.innerWidth / 2;
+    let followerY = window.innerHeight / 2;
+
+    window.addEventListener('mousemove', (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+
+        // Update mouse position for particles
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Immediate position for the dot
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+    });
+
+    // Smooth animation for the follower
+    function animateCursorFollower() {
+        followerX += (cursorX - followerX) * 0.15; // Smooth interpolation
+        followerY += (cursorY - followerY) * 0.15;
+
+        cursorFollower.style.left = followerX + 'px';
+        cursorFollower.style.top = followerY + 'px';
+
+        requestAnimationFrame(animateCursorFollower);
+    }
+    animateCursorFollower();
+
+    // Add hover states to interactive elements
+    const interactives = document.querySelectorAll('a, button, .custom-hover, .project-card, .btn');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            document.body.classList.add('cursor-hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            document.body.classList.remove('cursor-hover');
+        });
     });
 
 });
