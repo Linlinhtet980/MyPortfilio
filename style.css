@@ -457,7 +457,39 @@ img {
     justify-content: center;
     align-items: center;
     position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    width: 100%;
 }
+
+.tr-1, .tr-2, .tr-3, .tr-4 {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    z-index: 20;
+    cursor: pointer;
+}
+.tr-1 { top: 0; left: 0; }
+.tr-2 { top: 0; right: 0; }
+.tr-3 { bottom: 0; left: 0; }
+.tr-4 { bottom: 0; right: 0; }
+
+.hero-scene {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Quadrant Rotations */
+.tr-1:hover ~ .hero-scene { transform: rotateX(20deg) rotateY(-20deg); }
+.tr-2:hover ~ .hero-scene { transform: rotateX(20deg) rotateY(20deg); }
+.tr-3:hover ~ .hero-scene { transform: rotateX(-20deg) rotateY(-20deg); }
+.tr-4:hover ~ .hero-scene { transform: rotateX(-20deg) rotateY(20deg); }
 
 .hero-avatar-ring {
     width: 300px;
@@ -467,6 +499,14 @@ img {
     padding: 4px;
     position: relative;
     animation: ring-rotate 10s linear infinite;
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    box-shadow: rgba(108, 99, 255, 0) 40px 50px 25px -40px, rgba(108, 99, 255, 0.2) 0px 25px 25px -5px;
+}
+
+.hero-visual:hover .hero-avatar-ring {
+    box-shadow: rgba(108, 99, 255, 0.3) 30px 50px 25px -40px, rgba(108, 99, 255, 0.1) 0px 25px 30px 0px;
+    animation-play-state: paused;
 }
 
 @keyframes ring-rotate {
@@ -484,6 +524,12 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+}
+
+.hero-visual:hover .hero-avatar {
+    transform: translate3d(0, 0, 25px);
 }
 
 .avatar-img {
@@ -492,6 +538,11 @@ img {
     object-fit: cover;
     object-position: center top;
     border-radius: var(--radius-full);
+    transition: all 0.5s ease-in-out;
+}
+
+.hero-visual:hover .avatar-img {
+    transform: translate3d(0, 0, 50px);
 }
 
 /* Floating Tech Badges */
@@ -508,6 +559,14 @@ img {
     font-size: 1.4rem;
     box-shadow: var(--shadow-card);
     animation: float-badge 4s ease-in-out infinite;
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    z-index: 10;
+}
+
+.hero-visual:hover .floating-badge {
+    animation-play-state: paused;
+    box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
 }
 
 .badge-1 {
@@ -516,12 +575,18 @@ img {
     color: #E44D26;
     animation-delay: 0s;
 }
+.hero-visual:hover .badge-1 {
+    transform: translate3d(0, 0, 60px);
+}
 
 .badge-2 {
     top: 5%;
     right: 5%;
     color: #1572B6;
     animation-delay: 1s;
+}
+.hero-visual:hover .badge-2 {
+    transform: translate3d(0, 0, 80px);
 }
 
 .badge-3 {
@@ -530,12 +595,18 @@ img {
     color: #F7DF1E;
     animation-delay: 2s;
 }
+.hero-visual:hover .badge-3 {
+    transform: translate3d(0, 0, 100px);
+}
 
 .badge-4 {
     bottom: 5%;
     right: 5%;
     color: #777BB4;
     animation-delay: 3s;
+}
+.hero-visual:hover .badge-4 {
+    transform: translate3d(0, 0, 120px);
 }
 
 @keyframes float-badge {
