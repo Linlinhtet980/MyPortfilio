@@ -216,6 +216,58 @@ img {
 }
 
 /* ============================================
+   PRELOADER (NeoLeaf Style)
+   ============================================ */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background-color: #050508; /* Very dark, almost pure black for premium feel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.liquid-logo {
+    font-size: 6rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15); /* Subtle Outline */
+    background-image: linear-gradient(to top, #ffffff 50%, transparent 50%);
+    background-size: 100% 200%;
+    background-position: 0% 0%; /* 0% 0% is transparent, 0% 100% is white */
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: background-position 0.1s linear; /* Smooth fill */
+    margin-bottom: 10px;
+}
+
+.loading-counter {
+    position: absolute;
+    bottom: -20px;
+    right: 5px;
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+/* ============================================
    NAVBAR
    ============================================ */
 .navbar {

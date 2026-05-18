@@ -305,9 +305,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 skillObserver.unobserve(entry.target);
             }
         });
-    }, { 
+    }, {
         // Element မြင်ပြခြင်း၏ အနည်းဆုံး ရာခိုင်နှုန်း (50% မြင်ပြခြည့်ဆွဲခြည့်ဆွဲခြင်းနည်း)
-        threshold: 0.5 
+        threshold: 0.5
     });
 
     // Skill bar တစ်ခုချင်းစီကို observe လုပ်ခြင်း
@@ -460,17 +460,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // ====== SMOOTH REVEAL ON PAGE LOAD (စာမျက်နှာ စတင်သည့်အခါ အလုံးအစုံမှ ပွင့်လင်းခြင်း) ======
-    // Body ၏ opacity ကို သုညသို့ သတ်မှတ်ခြင်း (စတင်ခြင်း အခြင်းအလုံး)
-    document.body.style.opacity = '0';
-    // Opacity ပြောင်းလဲခြင်း animation ၏ အချိန် သတ်မှတ်ခြင်း
-    document.body.style.transition = 'opacity 0.5s ease';
+    // ====== PRELOADER & SMOOTH REVEAL (NeoLeaf Style) ======
+    const preloader = document.getElementById('preloader');
+    const loadingCounter = document.getElementById('loading-counter');
+    const liquidLogo = document.querySelector('.liquid-logo');
 
-    // Page load ရဲ့နိုးခြင်းန‌ အခါ အလုပ်လုပ်မည့်နည်း
-    window.addEventListener('load', () => {
-        // Body opacity ကို 1 သို့ ပြောင်းခြင်း (အပြည့်စုံ ပွင့်လင်းခြင်း) 0.5s အတွင်း
-        document.body.style.opacity = '1';
-    });
+    if (preloader && loadingCounter && liquidLogo) {
+        let progress = 0;
+
+        // Add transitions for smooth color switching
+        loadingCounter.style.transition = 'color 0.3s ease, text-shadow 0.3s ease';
+        liquidLogo.style.transition = 'background-position 0.1s linear, filter 0.3s ease, -webkit-text-stroke 0.3s ease';
+
+        function updateProgress() {
+            // Randomly increase progress for realistic loading feel
+            progress += Math.random() * 4 + 1;
+
+            if (progress > 100) progress = 100;
+
+            // Determine dynamic colors based on percentage
+            let color = '#ffffff';
+            if (progress <= 20) {
+                color = '#ff4757'; // Red
+            } else if (progress <= 40) {
+                color = '#ffa502'; // Orange
+            } else if (progress <= 60) {
+                color = '#eccc68'; // Yellow
+            } else if (progress <= 80) {
+                color = '#2ed573'; // Green
+            } else {
+                color = '#00d4aa'; // Cyan (Brand Accent)
+            }
+
+            // Update counter text and color
+            loadingCounter.textContent = Math.floor(progress) + '%';
+            loadingCounter.style.color = color;
+            loadingCounter.style.textShadow = `0 0 10px ${color}`;
+
+            // Fill the logo text with liquid of current color
+            liquidLogo.style.backgroundImage = `linear-gradient(to top, ${color} 50%, transparent 50%)`;
+            liquidLogo.style.backgroundPosition = `0% ${progress}%`;
+
+            // Enhance visibility with stroke and glow against dark background
+            liquidLogo.style.webkitTextStroke = `1.5px ${color}`;
+            liquidLogo.style.filter = `drop-shadow(0 0 15px ${color}66)`; // 66 is hex opacity for ~40%
+
+            if (progress < 100) {
+                // Loop with a random delay
+                setTimeout(updateProgress, Math.random() * 80 + 20);
+            } else {
+                // Done loading. Enhance glow at 100%
+                liquidLogo.style.filter = `drop-shadow(0 0 30px ${color})`;
+
+                // Wait a fraction of a second, then fade out
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 800);
+                }, 400);
+            }
+        }
+
+        // Start the fake loading sequence
+        updateProgress();
+    }
 
 
     // ====== CUSTOM CURSOR IMPLEMENTATION (ကိုယ့်သီးခွဲ Mouse cursor အုပ်စုံခြင်း) ======
